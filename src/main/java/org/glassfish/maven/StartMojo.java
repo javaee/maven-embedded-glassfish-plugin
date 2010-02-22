@@ -54,8 +54,7 @@ public class StartMojo extends AbstractServerMojo {
             super.setClassPathProperty();
             Server server = Util.getServer(serverID, installRoot, instanceRoot, configFile, autoDelete);
 
-            if (port != -1)
-                server.createPort(port);
+            Util.createPort(server, configFile, port);
 
             server.addContainer(getContainerBuilderType());
             server.start();

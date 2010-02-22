@@ -84,10 +84,8 @@ public class RunMojo extends AbstractDeployMojo {
                 server = Util.getServer(serverID, installRoot, instanceRoot, configFile, autoDelete);
                 server.addContainer(getContainerBuilderType());
             }
-
-            if (port != -1)
-                server.createPort(port);
-
+            Util.createPort(server, configFile, port);
+            
             server.start();
             EmbeddedDeployer deployer = server.getDeployer();
             DeployCommandParameters cmdParams = new DeployCommandParameters();

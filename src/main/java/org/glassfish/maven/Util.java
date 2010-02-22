@@ -47,6 +47,8 @@ import java.io.File;
 
 public  class Util {
 
+    private static final int DEFAULT_HTTP_PORT = 8080;
+
     public static Server getServer(String serverID, String installRoot, String instanceRoot, String configFile, 
             Boolean autoDelete) throws IOException {
 
@@ -78,6 +80,15 @@ public  class Util {
             efsb.autoDelete(autoDelete.booleanValue());
 
         return efsb.build();
+    }
+
+    public static void createPort(Server server, String configFile, int port)
+        throws java.io.IOException {
+        if (configFile != null && port == -1) {
+            server.createPort(DEFAULT_HTTP_PORT);
+        }
+        else if (port != -1)
+            server.createPort(port);
     }
 
 }
