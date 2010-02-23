@@ -40,6 +40,7 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
 import org.glassfish.api.deployment.DeployCommandParameters;
+import java.io.File;
 
 public abstract class AbstractDeployMojo extends AbstractServerMojo {
 /**
@@ -70,6 +71,20 @@ public abstract class AbstractDeployMojo extends AbstractServerMojo {
  * @parameter expression="${libraries}"
  */
     protected String libraries;
+/**
+ * @parameter expression="${project.build.directory}"
+*/
+     String buildDirectory;
+
+/**
+ * @parameter expression="${project.build.finalName}"
+*/
+     String fileName;
+
+     /**
+ * @parameter expression="${app}"
+ */
+    protected String app;
 
     public abstract void execute() throws MojoExecutionException, MojoFailureException;
 
@@ -88,4 +103,9 @@ public abstract class AbstractDeployMojo extends AbstractServerMojo {
             cmdParams.libraries = libraries;
     }
 
+    String getApp() {
+        if (app != null)
+            return app;
+        return app = buildDirectory + File.separator + fileName + ".war";
+    }
 }

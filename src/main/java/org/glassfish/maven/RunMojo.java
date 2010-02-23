@@ -52,11 +52,6 @@ import org.glassfish.api.embedded.ContainerBuilder;
 
 public class RunMojo extends AbstractDeployMojo {
 
-/**
- * @parameter expression="${app}"
- * @required
- */
-    protected String app;
 
 /**
  * @parameter expression="${cascade}"
@@ -70,7 +65,7 @@ public class RunMojo extends AbstractDeployMojo {
 
     public void execute() throws MojoExecutionException, MojoFailureException {
 
-        File deployArchive = new File(app);
+        File deployArchive = new File(getApp());
         if (!deployArchive.exists()) {
             throw new MojoExecutionException ("", new java.io.FileNotFoundException(app));
         }
