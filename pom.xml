@@ -44,13 +44,13 @@
   <groupId>org.glassfish</groupId>
   <artifactId>maven-embedded-glassfish-plugin</artifactId>
   <packaging>maven-plugin</packaging>
-  <version>3.1-SNAPSHOT</version>
+  <version>3.1-b05</version>
 
   <name>Maven Embedded GlassFish Plugin</name>
 
   <scm>
-      <connection>scm:svn:svn+ssh://janey@svn.java.net/glassfish~svn/branches/maven-plugin-3.1</connection>
-      <developerConnection>scm:svn:svn+ssh://janey@svn.java.net/glassfish~svn/branches/maven-plugin-3.1</developerConnection>
+      <connection>scm:svn:svn+ssh://janey@svn.java.net/glassfish~svn/tags/embedded-maven-plugin-3.1-b05</connection>
+      <developerConnection>scm:svn:svn+ssh://janey@svn.java.net/glassfish~svn/tags/embedded-maven-plugin-3.1-b05</developerConnection>
   </scm>
 
   <build>
