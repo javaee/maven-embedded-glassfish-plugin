@@ -51,7 +51,7 @@
   <groupId>org.glassfish.embedded</groupId>
   <artifactId>maven-embedded-glassfish-plugin</artifactId>
   <packaging>maven-plugin</packaging>
-  <version>3.1.3-SNAPSHOT</version>
+  <version>3.1.2-SNAPSHOT</version>
 
   <name>Maven Embedded GlassFish Plugin</name>
   <description>Maven Embedded GlassFish Plugin</description>
@@ -109,7 +109,6 @@
   <scm>
       <connection>scm:svn:svn+ssh://janey@svn.java.net/glassfish~svn/branches/maven-plugin-3.1.2</connection>
       <developerConnection>scm:svn:svn+ssh://janey@svn.java.net/glassfish~svn/branches/maven-plugin-3.1.2</developerConnection>
-    <url>https://github.com/sonatype/jvnet-parent/maven-embedded-glassfish-plugin</url>
   </scm>
 
   <build>
