@@ -154,7 +154,7 @@
      <dependency>
       <groupId>org.glassfish.main.common</groupId>
       <artifactId>simple-glassfish-api</artifactId>
-      <version>3.1.2-SNAPSHOT</version>
+      <version>3.1.2</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
@@ -166,16 +166,5 @@
       </plugin>
     </plugins>
   </reporting>
-
-    <repositories>
-        <repository>
-            <id>glassfish-maven-repository</id>
-            <name>Glassfish repository</name>
-            <url>http://maven.glassfish.org/content/groups/glassfish-group/</url>
-            <snapshots>
-                <updatePolicy>never</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
 
 </project>
