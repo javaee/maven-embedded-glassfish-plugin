@@ -107,8 +107,8 @@
   </licenses>
 
   <scm>
-      <connection>scm:svn:https://svn.java.net/svn/glassfish~svn/branches/maven-plugin-3.1.2</connection>
-      <developerConnection>scm:svn:https://svn.java.net/svn/glassfish~svn/branches/maven-plugin-3.1.2</developerConnection>
+      <connection>scm:svn:svn+ssh://janey@svn.java.net/glassfish~svn/branches/maven-plugin-3.1.2</connection>
+      <developerConnection>scm:svn:svn+ssh://janey@svn.java.net/glassfish~svn/branches/maven-plugin-3.1.2</developerConnection>
   </scm>
 
   <build>
