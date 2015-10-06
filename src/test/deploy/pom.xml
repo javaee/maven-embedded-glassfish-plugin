@@ -3,7 +3,7 @@
 
     DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 
-    Copyright (c) 1997-2011 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 1997-2015 Oracle and/or its affiliates. All rights reserved.
 
     The contents of this file are subject to the terms of either the GNU
     General Public License Version 2 only ("GPL") or the Common Development
@@ -42,57 +42,36 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.glassfish</groupId>
-  <artifactId>maven-glassfish-plugin-tester</artifactId>
+  <parent>
+    <groupId>org.glassfish.embedded.tester</groupId>
+    <artifactId>tester-parent</artifactId>
+    <version>4.1.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>deploy-tester</artifactId>
   <packaging>pom</packaging>
-  <version>3.2-SNAPSHOT</version>
-
-  <name>Maven deploy test</name>
-
-
+  <name>Glassfish Embedded Maven Plugin Deploy Tester</name>
 
   <build>
-  <defaultGoal>install</defaultGoal>
-
+    <defaultGoal>install</defaultGoal>
     <plugins>
       <plugin>
-        <groupId>org.glassfish</groupId>
+        <groupId>org.glassfish.embedded</groupId>
         <artifactId>maven-embedded-glassfish-plugin</artifactId>
-        <configuration>
-          <goalPrefix>glassfish</goalPrefix>
-          <app>test.war</app>
-          <port>8080</port> 
-       </configuration>
-  
-       <executions>
+        <version>${project.version}</version>
+        <executions>
           <execution>
-             <phase>install</phase>
-             <goals>
-                <goal>runweb</goal>
-              </goals>
+            <phase>install</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <app>test.war</app>
+              <port>8080</port> 
+            </configuration>
           </execution>
-       </executions>
-     </plugin>
+        </executions>
+      </plugin>
     </plugins>
- 
   </build>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.apache.maven</groupId>
-      <artifactId>maven-plugin-api</artifactId>
-      <version>2.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.maven</groupId>
-      <artifactId>maven-project</artifactId>
-      <version>2.0</version>
-    </dependency>
-
-  </dependencies>
-
-
-
-
 </project>
 
