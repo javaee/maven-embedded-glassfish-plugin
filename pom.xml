@@ -87,8 +87,8 @@
     </mailingLists>
 
     <issueManagement>
-        <system>JIRA</system>
-        <url>http://java.net/jira/browse/EMBEDDED_GLASSFISH</url>
+        <system>GitHub</system>
+        <url>https://github.com/javaee/maven-embedded-glassfish-plugin/issues</url>
     </issueManagement>
 
     <organization>
@@ -97,9 +97,9 @@
     </organization>
 
     <scm>
-        <connection>scm:svn:https://svn.java.net/svn/glassfish~svn/trunk/maven-plugins/maven-embedded-glassfish-plugin/</connection>
-        <developerConnection>scm:svn:https://svn.java.net/svn/glassfish~svn/trunk/maven-plugins/maven-embedded-glassfish-plugin/</developerConnection>
-        <url>http://java.net/projects/glassfish/sources/svn/show/trunk/maven-plugins/maven-embedded-glassfish-plugin/</url>
+        <connection>scm:git:https://github.com/javaee/maven-embedded-glassfish-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:javaee/maven-embedded-glassfish-plugin.git</developerConnection>
+        <url>https://github.com/javaee/maven-embedded-glassfish-plugin</url>
     </scm>
 
     <build>
@@ -120,6 +120,15 @@
                 <version>2.9</version>
                 <configuration>
                     <goalPrefix>embedded-glassfish</goalPrefix>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <mavenExecutorId>forked-path</mavenExecutorId>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <arguments>${release.arguments}</arguments>
                 </configuration>
             </plugin>
         </plugins>
@@ -168,4 +177,52 @@
             <url>https://glassfish.dev.java.net/public/CDDL+GPL.html</url>
         </license>
     </licenses>
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.4</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>                    
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
