@@ -72,24 +72,16 @@
     <mailingLists>
         <mailingList>
             <name>GlassFish Users List</name>
-            <subscribe>user-subscribe@users@glassfish.java.net</subscribe>
-            <unsubscribe>user-unsubscribe@glassfish.java.net</unsubscribe>
-            <post>users@glassfish.java.net</post>
-            <archive>http://java.net/projects/glassfish/lists/users/archive</archive>
-        </mailingList>
-        <mailingList>
-            <name>Embedded GlassFish Users List</name>
-            <subscribe>user-subscribe@users@embedded-glassfish.java.net</subscribe>
-            <unsubscribe>user-unsubscribe@embedded-glassfish.java.net</unsubscribe>
-            <post>users@embedded-glassfish.java.net</post>
-            <archive>http://java.net/projects/embedded-glassfish/lists/users/archive</archive>
+            <subscribe>glassfish+subscribe@javaee.groups.io</subscribe>
+            <unsubscribe>glassfish+unsubscribe@javaee.groups.io</unsubscribe>
+            <post>glassfish@javaee.groups.io</post>
         </mailingList>
     </mailingLists>
 
     <issueManagement>
-        <system>JIRA</system>
-        <url>http://java.net/jira/browse/EMBEDDED_GLASSFISH</url>
-    </issueManagement>
+        <system>github</system>
+        <url>https://github.com/javaee/maven-embedded-glassfish-plugin/issues/</url>
+    </issueManagement>    
 
     <organization>
         <name>Oracle</name>
@@ -97,9 +89,10 @@
     </organization>
 
     <scm>
-        <connection>scm:svn:https://svn.java.net/svn/glassfish~svn/trunk/maven-plugins/maven-embedded-glassfish-plugin/</connection>
-        <developerConnection>scm:svn:https://svn.java.net/svn/glassfish~svn/trunk/maven-plugins/maven-embedded-glassfish-plugin/</developerConnection>
-        <url>http://java.net/projects/glassfish/sources/svn/show/trunk/maven-plugins/maven-embedded-glassfish-plugin/</url>
+      <connection>scm:git:https://github.com/javaee/maven-embedded-glassfish-plugin.git</connection>
+      <developerConnection>scm:git:ssh://git@github.com/javaee/maven-embedded-glassfish-plugin.git</developerConnection>
+      <url>https://github.com/javaee/maven-embedded-glassfish-plugin</url>
+      <tag>HEAD</tag>
     </scm>
 
     <build>
@@ -110,8 +103,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.7.0</version>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -122,6 +115,67 @@
                     <goalPrefix>embedded-glassfish</goalPrefix>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <includePom>true</includePom>
+                </configuration>
+                <executions>
+                    <execution>
+                       <id>attach-sources</id>
+                       <goals>
+                           <goal>jar-no-fork</goal> 
+                       </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.1</version>
+                <executions>
+                  <execution>
+                    <id>attach-javadocs</id>
+                      <goals>
+                          <goal>jar</goal>
+                      </goals>
+                  </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-gpg-plugin</artifactId>
+                 <version>1.6</version>
+                 <executions>
+                     <execution>
+                         <id>sign-artifacts</id>
+                         <phase>verify</phase>
+                         <goals>
+                             <goal>sign</goal>
+                         </goals>
+                     </execution>
+                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>                           
+                <artifactId>maven-release-plugin</artifactId>                         
+                 <version>2.5.2</version>
+                <configuration>                                                       
+                    <mavenExecutorId>forked-path</mavenExecutorId>                
+                    <useReleaseProfile>false</useReleaseProfile>                  
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                    <arguments>${release.arguments}</arguments>
+                </configuration>                                                      
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-gitexe</artifactId>
+                        <version>1.9.4</version>
+                    </dependency>
+                </dependencies>
+            </plugin>                    
         </plugins>
         <extensions>
             <extension>
@@ -163,9 +217,10 @@
 
     <licenses>
         <license>
+            <name>CDDL + GPLv2 with classpath exception</name>
+            <url>://oss.oracle.com/licenses/CDDL+GPL-1.1</url>
             <distribution>repo</distribution>
-            <name>CDDL and GPLv2 w/ classpath execption dual license</name>
-            <url>https://glassfish.dev.java.net/public/CDDL+GPL.html</url>
+            <comments>A business-friendly OSS license</comments>
         </license>
     </licenses>
 </project>
