@@ -50,7 +50,7 @@
     <groupId>org.glassfish.embedded</groupId>
     <artifactId>maven-embedded-glassfish-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>5.0</version>
+    <version>5.1-SNAPSHOT</version>
 
     <name>Maven Embedded GlassFish Plugin</name>
     <description>Maven Embedded GlassFish Plugin</description>
@@ -92,7 +92,7 @@
       <connection>scm:git:https://github.com/javaee/maven-embedded-glassfish-plugin.git</connection>
       <developerConnection>scm:git:ssh://git@github.com/javaee/maven-embedded-glassfish-plugin.git</developerConnection>
       <url>https://github.com/javaee/maven-embedded-glassfish-plugin</url>
-      <tag>5.0</tag>
+      <tag>HEAD</tag>
     </scm>
 
     <build>
